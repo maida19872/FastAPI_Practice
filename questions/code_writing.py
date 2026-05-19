@@ -48,7 +48,8 @@ Question 7.
 @app.delete("/product/{product_id}")
 def delete_product(product_id:int):
     return {"message": f"Product with ID {product_id} has been deleted successfully."}
-
+    
+...
 Question 8.
 # Write a GET API that returns only recipes whose ingredients contain "tomato".
 @app.get("/recipes")
