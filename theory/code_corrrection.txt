@@ -1,0 +1,62 @@
+Find the Mistake & Correct It
+
+
+Question 1
+from fastapi import FastAPI
+app = FastAPI
+@app.get("/")
+def home():
+    return {"message": "Hello"}
+
+correct code
+from fastapi import FastAPI
+app = FastAPI()
+@app.get("/")
+def home():
+    return {"message": "Hello"}
+
+
+Question 2
+@app.post("/users")
+def create_user(user):
+    return user
+
+correct code
+@app.post("/users")
+def create_user(user: dict):
+    return user
+
+
+Question 3
+@app.get("/products/{id}")
+def get_product(id: str):
+    return {"id": id + 1}
+
+correct code
+@app.get("/products/{id}")
+def get_product(id: int):
+    return {"id": id + 1}
+
+
+Question 4
+students = []
+@app.delete("/students/{id}")
+def delete_student(id: int):
+    students.remove(id)
+
+correct code
+students = []
+@app.delete("/students/{id}")
+def delete_student(id: int):
+    
+
+
+Question 5
+class User(BaseModel)
+    name: str
+    age: int
+
+correct code
+class User(BaseModel):
+    name: str
+    age: int

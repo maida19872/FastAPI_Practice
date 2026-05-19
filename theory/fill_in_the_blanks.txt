@@ -1,1 +1,64 @@
 Fill in the blanks exercises for FastAPI theory
+
+1.To create a FastAPI application object, we write:
+app = FastAPI __________()✓
+
+2.To run a FastAPI app using Uvicorn:
+uvicorn main:app--reload __________✓
+
+3.The decorator used for creating a GET API is:
+@app.get__________("/users")✓
+
+4.Complete the path parameter:
+@app.get("/users/{user_ID__________}")✓
+
+5.Query parameters are usually passed after the ? symbol in the url__________.✓
+
+6.Complete the code:
+@app.delete("/students/{id}")
+def delete_student(id: int__________):✓
+
+7.Pydantic models usually inherit from:	
+class User(BaseModel__________):✓
+
+8.Complete the request body model:	
+class Product(BaseModel):
+    name: str__________✓
+
+9.The FastAPI server automatically returns status code 200__________ for successful GET requests.✓
+
+10.To install FastAPI:
+pip install fastapi uvicorn__________✓
+
+11.Complete the API:	
+@app.post("/books")
+def add_book(book:book __________):✓
+
+12.The keyword used for optional query parameters is:	
+limit: int =optional __________✓
+
+13.Complete the code:
+students = []
+students.append__________({"name": "Ali"})✓
+
+14.The HTTP method mainly used for updating data is:PUT	✓
+
+15.Complete the route:
+@app.put("/users/{user_id}")
+user_id here is called a path __________ parameter.✓
+
+16.Complete the filtering condition:	
+if recipe["name"] == __________:
+
+17.FastAPI uses Python library Pydantic__________ for automatic validation.✓
+
+18.Complete the import:	
+from fastapi import FastAPI__________✓
+
+19.To define a response model:
+@app.get("/users", response_model=List[User]__________)✓
+
+20.Complete the code:	
+@app.get("/items")
+def get_items(skip: int = 0, limit: int = 10):
+Here skip and limit are query__________ parameters.✓
