@@ -1,0 +1,1 @@
+Fill in the blanks exercises for FastAPI theory
