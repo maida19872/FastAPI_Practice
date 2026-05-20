@@ -47,9 +47,8 @@ students.append__________({"name": "Ali"})✓
 @app.put("/users/{user_id}")
 user_id here is called a path __________ parameter.✓
 
-...
 16.Complete the filtering condition:	
-if recipe["name"] == __________:
+if recipe["name"] == name__________:✓
 
 17.FastAPI uses Python library Pydantic__________ for automatic validation.✓
 
@@ -57,7 +56,7 @@ if recipe["name"] == __________:
 from fastapi import FastAPI__________✓
 
 19.To define a response model:
-@app.get("/users", response_model=List[User]__________)✓
+@app.get("/users", response_model=List[users]__________)✓
 
 20.Complete the code:	
 @app.get("/items")

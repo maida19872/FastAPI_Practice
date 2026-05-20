@@ -49,17 +49,24 @@ Question 7.
 def delete_product(product_id:int):
     return {"message": f"Product with ID {product_id} has been deleted successfully."}
     
-...
+
 Question 8.
 # Write a GET API that returns only recipes whose ingredients contain "tomato".
 @app.get("/recipes")
 def get_recipes():
+    recipes = [
+        {"name": "Pasta", "ingredients": ["tomato", "basil", "garlic"]},
+        {"name": "Salad", "ingredients": ["lettuce", "cucumber", "tomato"]},
+        {"name": "Soup", "ingredients": ["carrot", "onion", "celery"]}
+    ]
+    tomato_recipes = [recipe for recipe in recipes if "tomato" in recipe["ingredients"]]
+    return tomato_recipes
 
 
 Question 9.
 # Write a PUT API route for updating a user using user_id.
 @app.put("/users/{user_id} ")
-def upate_user(user_id:int, user:dict):
+def update_user(user_id:int, user:dict):
     return{"user_id": user_id, "user": user}
 
 Question 10.

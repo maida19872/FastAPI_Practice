@@ -43,12 +43,13 @@ students = []
 @app.delete("/students/{id}")
 def delete_student(id: int):
     students.remove(id)
-...
+
 correct code
 students = []
 @app.delete("/students/{id}")
 def delete_student(id: int):
-    
+    students.remove({"id": id})
+    return {"message": "Student deleted"}  
 
 
 Question 5
