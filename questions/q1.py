@@ -15,44 +15,62 @@
 # Add type hints
 # Return proper messages if a book is not found
 
-from fastapi import APIRouter   
+from fastapi import FastAPI 
 from pydantic import BaseModel
 
-router=APIRouter()
+app = FastAPI()
 books = []
 
 class Book(BaseModel):
     id:int
     title:str
+    author_name:str
 
-@router.post("/books")
+@app.post("/add_a_new_book")
 def add_book(book:Book):
     books.append(book)
-    return book
+    return {
+        "message": "Book added successfully",
+        "book": book
+    }
 
-@router.get("/books")
+
+@app.get("/get_all_books")
 def get_all_books():
-    return books
+    return {
+        "message": "Books retrieved successfully",
+        "books": books
+    }
 
-@router.get("/books/{id}")
+@app.get("/get_book/{id}")
 def get_book(id:int):
     for book in books:
         if book.id == id:
             return book
     return {"message": "Book not found"}
 
-@router.put("/books/{id}")
+@app.put("/update_book/{id}")
 def update_book(id:int, updated_book:Book):
     for book in books:
         if book.id == id:
             book.title = updated_book.title
-            return book
+            return {"message": "Book updated successfully", "book": book}
     return {"message": "Book not found"}
 
-@router.delete("/books/{id}")
+@app.delete("/remove_book/{id}")
 def delete_book(id:int):
     for book in books:
         if book.id == id:
             books.remove(book)
-            return book
+            return {"message": "Book removed successfully", "book": book}
+    return {"message": "Book not found"}
+
+@app.get("/get_books_by_author/{author_name}")
+def get_book_by_author_name(author_name: str):
+    author_books = []
+    for book in books:
+        if book.author_name == author_name:
+            author_books.append(book)
+    if author_books:
+        return {"message": "Books found","books": author_books}
     return {"message": "Book not found"}
