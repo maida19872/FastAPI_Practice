@@ -14,10 +14,10 @@
 # Use response models
 # Handle invalid data types properly
 
-from fastapi import APIRouter
+from fastapi import FastAPI
 from pydantic import BaseModel
 
-router = APIRouter()
+app = FastAPI()
 recipes = []
 
 class Recipe(BaseModel):
@@ -26,25 +26,25 @@ class Recipe(BaseModel):
     ingredients: list
     cooking_time: int
 
-@router.post("/recipes")
+@app.post("/add_recipes")
 def create_recipe(recipe: Recipe):
     recipes.append(recipe)
     return recipe
 
-@router.get("/recipes")
+@app.get("/recipes_by_ingredient")
 def get_recipes(ingredient: str = None):
     if ingredient:
         return [recipe for recipe in recipes if ingredient in recipe.ingredients]
     return recipes
 
-@router.get("/recipes/{id}")
+@app.get("/recipes_by_id/{id}")
 def get_recipe(id: int):
     for recipe in recipes:
         if recipe.id == id:
             return recipe
     return {"message": "Recipe not found"}
 
-@router.put("/recipes/{id}")
+@app.put("/recipes_updated/{id}")
 def update_recipe(id: int, updated_recipe: Recipe):
     for recipe in recipes:
         if recipe.id == id:
@@ -54,7 +54,7 @@ def update_recipe(id: int, updated_recipe: Recipe):
             return recipe
     return {"message": "Recipe not found"}
 
-@router.delete("/recipes/{id}")
+@app.delete("/delete_recipe_by_id/{id}")
 def delete_recipe(id: int):
     for recipe in recipes:
         if recipe.id == id:
